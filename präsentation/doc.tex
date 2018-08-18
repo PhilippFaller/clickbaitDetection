@@ -7,46 +7,67 @@
 % in dieser
 % Reihenfolge
 \usepackage{tabularx}
+\beamertemplatenavigationsymbolsempty
 
 \author{Hier eure Namen eintragen, Philipp}
 \title{Clickbait Detection}
 \begin{document}
-
+%\item[\textbf{+}] #1
+\newcommand{\pro}[1]{\item[\colorbox{green}{\textcolor{white}{\makebox(5.5,7){\textbf{+}}}}] #1}
+\newcommand{\con}[1]{\item[\colorbox{red}{\textcolor{white}{\makebox(5.5,7){\textbf{--}}}}] #1}
 \begin{frame}
 \titlepage
 \end{frame}
 
-\section{Paper 1}
+\section{Albacore Clickbait Detection}
 \begin{frame}
-\frametitle{Paper 1}
+\frametitle{Albacore Clickbait Detection}
     \begin{definition}
-    Clickbait ist doof.
-    \end{definition}
+    %Headers of news articles that have misleading titles and exaggerate the content of the news
+	%articles to create misleading expectations for users are called clickbaits   
+	Eine Vorschau eines Nachrichtenartikels, die einen irreführenden Titel oder übertriebenen Inhalt enthält, um falsche Erwartungen 
+	beim Benutzer zu erzeugen, heißt Clickbait.
+	\end{definition}
 \end{frame}
 \begin{frame}
     \frametitle{Zielsetzung}
-    Clickbait verhindern.
+	\begin{itemize}    
+	\item Regressor Modell vorstellen, das die Wahrscheinlichkeit angibt, mit der ein Post Clickbait ist.
+	\item Mean Sqaured Error auf Datensatz minimieren.
+	\end{itemize}
 \end{frame}
 \begin{frame}
     \frametitle{Beschreibung}
-    \begin{itemize}
-    \item Dinge tun
-    \item ... 
-    \item Profit
-    \end{itemize}
+    \begin{figure}
+  	\includegraphics[width=0.8\linewidth]{albacore.png}
+\end{figure}
 \end{frame}
 \begin{frame}
     \frametitle{Evaluierung}
     \center
-    \begin{tabular}{l c c}
-    Paper & Metrik 1 & Metrik 2 \\ \hline 
-    Paper 1 & gut & nicht so gut \\
-    Paper 1 & besser & Paulaner \\
+    \begin{tabular}{c|c}
+    Metrik & Ergebnis \\ \hline 
+    Mean Squared Error & 0.0315200660647 \\
+	Median Absolute Error & 0.121994006614 \\
+	F1 Score & 0.670346813873 \\
+	Precision & 0.731534834992 \\
+	Recall & 0.618604651163 \\
+	Accuracy & 0.855261078034 \\
+	R2 Score & 0.571308479307 \\
+	Runtime & 00:01:10 \\
     \end{tabular}
+	
+	\begin{itemize}
+	\item Clickbait Challenge 2017 gewonnen
+	\end{itemize}
 \end{frame}
 \begin{frame}
     \frametitle{Kritik}
-    Alles gucci.
+    \begin{itemize}
+	\pro{Kleiner Mean Squared Error}
+	\pro{Einfaches Modell}
+	\con{Nur \texttt{postText} benutzt}
+	\end{itemize}
 \end{frame}
 
 \end{document}
