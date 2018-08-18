@@ -7,6 +7,7 @@
 % in dieser
 % Reihenfolge
 \usepackage{tabularx}
+\usepackage{csquotes}
 \beamertemplatenavigationsymbolsempty
 
 \author{Hier eure Namen eintragen, Philipp}
@@ -23,8 +24,6 @@
 \begin{frame}
 \frametitle{Albacore Clickbait Detection}
     \begin{definition}
-    %Headers of news articles that have misleading titles and exaggerate the content of the news
-	%articles to create misleading expectations for users are called clickbaits   
 	Eine Vorschau eines Nachrichtenartikels, die einen irreführenden Titel oder übertriebenen Inhalt enthält, um falsche Erwartungen 
 	beim Benutzer zu erzeugen, heißt Clickbait.
 	\end{definition}
@@ -116,6 +115,52 @@
 	\con{Komplizierter als Albacore, trotzdem schlechter}
 	\con{Nur \texttt{postText} benutzt}
 	\end{itemize}
+\end{frame}
+
+\section{Identifying Clickbait Posts on Social Media with an Ensemble of Linear Models}
+\begin{frame}
+	\frametitle{Identifying Clickbait Posts on Social Media with an Ensemble of Linear Models}
+	\begin{definition}
+	Definition Clickbait, Erklärung CB Challenge
+	\end{definition}
+\end{frame}
+\begin{frame}
+	\frametitle{Approach}
+        \begin{itemize}
+		\item Zusätzliche Daten gesammelt:
+		    \begin{itemize}
+			\item Clickbait: FB-Gruppen von Buzzfeed, Upworthy, etc.
+			\item Non-Clickbait: FB Gruppen von CNN News, Wikinews, NYTimes.
+			\end{itemize}
+    	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Approach cont.}
+        \begin{itemize}
+		\item Modeling:
+		    \begin{itemize}
+    		\item Repeated sentences entfernt
+			\item HTML Tags entfernt
+			\item Englische Stop-Words entfernt
+			\item Stem der Wörter extrahiert
+			\item Numbers by token [n] ersetzt
+			\item Bag-of-Words um textualle Information in Vector Space zu kodieren. Tokens, 2- und 3-grams benutzt
+			\item Keine Image-Daten
+			\end{itemize}
+		\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Approach cont.}
+        \begin{itemize}
+		\item ML Models:
+		    \begin{itemize}
+		    \item Mehrere LMs kombiniert mit Tree-based-Model.
+			\item Für jedes Text-Feature (posttext, targetkeywords, target caption etc.) wurde ein SVM trainiert. Sollten \enquote{clickbaitness} schätzen. Bestes Modell war basiert auf Posttext.
+		    \item Weiteres Modellset trainiert, um Standard Deviation der Clickbaitness zu predicten. 
+			\item Zuletzt Binärer Classifier gebaut (ebenfalls SVM).
+			\item Nach Training der Modele anhand "stacking" kombiniert - Output der Modelle wird als Input für anderes Modell genutzt. Extremely Randomized Trees genutzt.
+			\end{itemize}
+        \end{itemize}
 \end{frame}
 
 \end{document}
