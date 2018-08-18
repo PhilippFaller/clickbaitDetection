@@ -33,7 +33,7 @@
     \frametitle{Zielsetzung}
 	\begin{itemize}    
 	\item Regressor Modell vorstellen, das die Wahrscheinlichkeit angibt, mit der ein Post Clickbait ist.
-	\item Mean Sqaured Error auf Datensatz minimieren.
+	\item Mean Sqaured Error auf Datensatz der Clickbait Challenge minimieren.
 	\end{itemize}
 \end{frame}
 \begin{frame}
@@ -47,13 +47,13 @@
     \center
     \begin{tabular}{c|c}
     Metrik & Ergebnis \\ \hline 
-    Mean Squared Error & 0.0315200660647 \\
-	Median Absolute Error & 0.121994006614 \\
-	F1 Score & 0.670346813873 \\
-	Precision & 0.731534834992 \\
-	Recall & 0.618604651163 \\
-	Accuracy & 0.855261078034 \\
-	R2 Score & 0.571308479307 \\
+    Mean Squared Error & 0.0315 \\
+	Median Absolute Error & 0.122 \\
+	F1 Score & 0.670 \\
+	Precision & 0.732 \\
+	Recall & 0.619 \\
+	Accuracy & 0.855 \\
+	R2 Score & 0.571 \\
 	Runtime & 00:01:10 \\
     \end{tabular}
 	
@@ -66,6 +66,54 @@
     \begin{itemize}
 	\pro{Kleiner Mean Squared Error}
 	\pro{Einfaches Modell}
+	\con{Nur \texttt{postText} benutzt}
+	\end{itemize}
+\end{frame}
+
+\section{Zingel Clickbait Detector}
+\begin{frame}
+\frametitle{Zingel Clickbait Detection}
+    \begin{definition}
+    %Headers of news articles that have misleading titles and exaggerate the content of the news
+	%articles to create misleading expectations for users are called clickbaits   
+	Clickbait bezeichnet etwas (wie z.B. eine Überschrift), das so entworfen wurde, dass Leser auf einen Hyperlink klicken wollen,
+	insbesondere, wenn der Link zu Inhalten dubiosen Interesses oder Wertes führt.
+	\end{definition}
+\end{frame}
+\begin{frame}
+    \frametitle{Zielsetzung}
+	\begin{itemize}    
+	\item Automatisierten Ansatz entwickeln, um Clickbait aus Twitter Stream zu filtern.
+	\item Mean Sqaured Error auf Datensatz der Clickbait Challenge minimieren.
+	\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Beschreibung}
+    \begin{figure}
+  	\includegraphics[width=0.7\linewidth]{zingel.png}
+\end{figure}
+\end{frame}
+\begin{frame}
+    \frametitle{Evaluierung}
+    \center
+    \begin{tabular}{c|c}
+    Metrik & Ergebnis \\ \hline 
+    Mean Squared Error & 0.0333 \\
+	F1 Score & 0.683 \\
+	Accuracy & 0.856 \\
+	Runtime & 00:03:27 \\
+    \end{tabular}
+	
+	\begin{itemize}
+	\item Zweiter Platz bei Clickbait Challenge 2017
+	\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Kritik}
+    \begin{itemize}
+	\pro{Kleiner Mean Squared Error}
+	\pro{Einfaches Modell}
+	\con{Komplizierter als Albacore, trotzdem schlechter}
 	\con{Nur \texttt{postText} benutzt}
 	\end{itemize}
 \end{frame}
